@@ -13,7 +13,8 @@ public class MainActivity extends AppCompatActivity {
     int numnang;
     Float numcao;
     Float numkq;
-    String str,str1,str2;
+    String str;
+    boolean kt=true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,27 +27,23 @@ public class MainActivity extends AppCompatActivity {
         bttinh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    numnang = Integer.parseInt(nang.getText().toString());
-                    numcao = Float.parseFloat(cao.getText().toString());
-                }catch (NumberFormatException e){
-                    numcao= Float.valueOf(0);
-                }
+                numnang = Integer.parseInt(nang.getText().toString());
+                numcao = Float.parseFloat(cao.getText().toString());
                 if (numcao==0){
-                    kq.setText("Nhập đúng định dạng");
-                }else
-                    str=String.valueOf(numnang*1.0/(numcao*numcao)).toString();
+                    kq.setText("Nhập đúng định dạng".toString());
+                }else{
+                    str=String.valueOf(numnang*1.0/(numcao*numcao));
                     kq.setText(str);
                     numkq=Float.parseFloat(kq.getText().toString());
                     String loai;
                     if ( numkq <18 ) loai="Người gầy";
-                        else if (numkq < 25) loai = "Người bình thường";
-                            else if (numkq <30) loai = "Người béo phì độ I";
-                                else if (numkq <35) loai ="Người béo phì độ II";
-                                    else loai= "Người béo phì độ III";
+                    else if (numkq < 25) loai = "Người bình thường";
+                    else if (numkq <30) loai = "Người béo phì độ I";
+                    else if (numkq <35) loai ="Người béo phì độ II";
+                    else loai= "Người béo phì độ III";
                     kqc.setText(loai);
-                }
-            }
+                }}
+        }
         );
 
     }
